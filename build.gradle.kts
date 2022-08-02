@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     kotlin("jvm") version "1.6.21"
+    `maven-publish`
 }
 
 group = "io.github.hider"
@@ -23,6 +24,26 @@ tasks {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict", "-opt-in=kotlin.RequiresOptIn")
             jvmTarget = "11"
+        }
+    }
+}
+
+val githubUsername: String? = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/$githubUsername/${project.name}")
+            credentials {
+                username = githubUsername
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
