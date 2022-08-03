@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.hider"
-version = "1.0.0"
+version = "1.0.1"
 description = "SLF4J logging support for libGDX"
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -48,6 +48,17 @@ publishing {
     publications {
         register<MavenPublication>("gpr") {
             from(components["java"])
+            pom {
+                name.set("${project.group}:${project.name}")
+                description.set(project.description)
+                url.set("https://github.com/hider/libgdx-slf4j-logger")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://opensource.org/licenses/MIT")
+                    }
+                }
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
 An implementation of `com.badlogic.gdx.ApplicationLogger` which uses SLF4J API to log messages by libGDX application log methods, like `Gdx.app.log`, `Gdx.app.error` and `Gdx.app.debug`.
 
 ## Usage
-First, add the GitHub Packages repository (`https://maven.pkg.github.com/hider/libgdx-slf4j-logger`) and `io.github.hider:libgdx-slf4j-logger:1.0.0` dependency to your project.
+First, add the JitPack repository (`https://jitpack.io`) and `io.github.hider:libgdx-slf4j-logger:1.0.0` dependency to your project.
 Then, add an SLF4J binding like `org.slf4j:slf4j-simple:1.7.36` as a runtime dependency.
 Finally, set `Slf4jApplicationLogger` as logger of the `com.badlogic.gdx.Application` instance.
 Requires Java 11 or newer.
@@ -14,7 +14,7 @@ Requires Java 11 or newer.
 ```kotlin
 repositories {
     maven {
-        url = uri("https://maven.pkg.github.com/hider/libgdx-slf4j-logger")
+        url = uri("https://jitpack.io")
     }
 }
 dependencies {
@@ -30,9 +30,8 @@ dependencies {
 <project>
     <repositories>
         <repository>
-            <id>github-hider</id>
-            <name>GitHub hider/libgdx-slf4j-logger Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/hider/libgdx-slf4j-logger</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
     <dependencies>
