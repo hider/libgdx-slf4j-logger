@@ -7,7 +7,11 @@ plugins {
 group = "io.github.hider"
 version = "1.0.0"
 description = "SLF4J logging support for libGDX"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    withJavadocJar()
+    withSourcesJar()
+}
 
 repositories {
     mavenCentral()
@@ -16,7 +20,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("com.badlogicgames.gdx:gdx:1.11.0")
-    implementation("org.slf4j:slf4j-api:1.7.36")
+    api("org.slf4j:slf4j-api:1.7.36")
 }
 
 tasks {
